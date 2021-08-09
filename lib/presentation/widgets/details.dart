@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:weather/models/weather.dart';
-import 'package:weather/theme/color_theme.dart';
+import 'package:weather/domain/models/weather.dart';
+import 'package:weather/presentation/utils/color_theme.dart';
 
 class Details extends StatelessWidget{
 

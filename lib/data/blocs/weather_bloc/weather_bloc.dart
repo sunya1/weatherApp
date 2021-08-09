@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:weather/models/weather.dart';
-import 'package:weather/repository/weather_repository.dart';
+import 'package:weather/domain/models/weather.dart';
+import 'package:weather/domain/repository/weather_repository.dart';
+
 
 part 'weather_event.dart';
 part 'weather_state.dart';
@@ -24,7 +25,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
       try{
 
-        final List<Weather> weathers = await weatherRepository.getWeatherFromCity(event.city);
+        final List<Weather> weathers = await weatherRepository.getWeather(city: event.city);
 
 
         yield WeatherStateSuccess(weathers: weathers);
@@ -39,7 +40,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
       try{
 
-        final List<Weather> weathers = await weatherRepository.getWeatherFromCity(event.city );
+        final List<Weather> weathers = await weatherRepository.getWeather(city: event.city );
 
         yield WeatherStateSuccess(weathers: weathers);
       }

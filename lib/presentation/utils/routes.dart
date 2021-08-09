@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:weather/screens/home/screen.dart';
-import 'package:weather/screens/main/screen.dart';
+import 'package:weather/presentation/screens/main/screen.dart';
+
 
 
 

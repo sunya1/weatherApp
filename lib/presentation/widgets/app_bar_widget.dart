@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:weather/blocs/weather_bloc/weather_bloc.dart';
+import 'package:weather/data/blocs/weather_bloc/weather_bloc.dart';
 
-import 'package:weather/resources/icons.dart';
-import 'package:weather/theme/color_theme.dart';
-import 'package:weather/theme/text_theme.dart';
+
+import 'package:weather/presentation/utils/icons.dart';
+import 'package:weather/presentation/utils/color_theme.dart';
+import 'package:weather/presentation/utils/text_theme.dart';
 
 class AppBarWidget extends StatefulWidget {
   final String hintText;

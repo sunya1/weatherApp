@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:weather/models/weather.dart';
+import 'package:weather/domain/models/weather.dart';
+import 'package:weather/presentation/widgets/weather_item.dart';
 
-import 'WeatherItem.dart';
+
 
 class Weathers extends StatelessWidget{
   List<Weather> weathers;

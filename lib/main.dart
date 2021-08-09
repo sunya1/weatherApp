@@ -3,19 +3,21 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather/blocs/theme_bloc/theme_bloc.dart';
-import 'package:weather/blocs/weather_bloc/weather_bloc.dart';
-import 'package:weather/blocs/weather_bloc/weather_bloc_observer.dart';
-import 'package:weather/repository/weather_repository.dart';
-import 'package:weather/screens/home/screen.dart';
-import 'package:weather/screens/main/screen.dart';
+
+import 'package:weather/internal/dependencies/repository_module.dart';
+
+import 'package:weather/presentation/screens/main/screen.dart';
+
+import 'data/blocs/theme_bloc/theme_bloc.dart';
+import 'data/blocs/weather_bloc/weather_bloc.dart';
+import 'data/blocs/weather_bloc/weather_bloc_observer.dart';
+import 'domain/repository/weather_repository.dart';
+
 
 
 void main() {
   Bloc.observer = WeatherBlocObserver();
-  final WeatherRepository weatherRepository = WeatherRepository(
-    httpClient: http.Client()
-  );
+  final WeatherRepository weatherRepository = RepositoryModule.weatherRepository();
   runApp(
     BlocProvider<ThemeBloc>(
         create: (context) => ThemeBloc() ,
@@ -33,7 +35,6 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(
             statusBarColor: Colors.transparent
-          //color set to transperent or set your own color
         )
     );
     return MaterialApp(

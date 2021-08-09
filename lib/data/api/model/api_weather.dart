@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Weather extends Equatable {
+class ApiWeather  {
   final WeatherCondition weatherCondition ;
   final String formattedCondition ;
   final String created ;
@@ -14,50 +14,20 @@ class Weather extends Equatable {
   final String location ;
 
 
-  const Weather({
-    this.weatherCondition,
-    this.formattedCondition,
-    this.created,
-    this.minTemp,
-    this.maxTemp,
-    this.temp,
-    this.windSpeed,
-    this.airPressure,
-    this.humidity,
-    this.lastUpdated,
-    this.location
-  });
 
-  @override
-  // TODO: implement props
-  List<Object> get props => [
-    weatherCondition,
-    formattedCondition,
-    created,
-    minTemp,
-    maxTemp,
-    temp,
-    windSpeed,
-    airPressure,
-    humidity
-  ];
-  factory Weather.fromJson( dynamic consolidatedWeather, String city  ) {
+  ApiWeather.fromJson( dynamic consolidatedWeather, String city  ) :
+        weatherCondition = _mapStringToWeatherCondition(consolidatedWeather['weather_state_abbr'])  ?? '',
+        formattedCondition = consolidatedWeather['weather_state_abbr'] ?? '' ,
+        created = consolidatedWeather['applicable_date'] ?? '',
+        minTemp = consolidatedWeather['min_temp']  as double ?? 0.0,
+        maxTemp = consolidatedWeather['max_temp'] as double ?? 0.0 ,
+        temp = consolidatedWeather['the_temp'] as double ?? 0.0,
+        windSpeed = consolidatedWeather['wind_speed'] as double ?? 0.0,
+        airPressure = consolidatedWeather['air_pressure'] as double ?? 1000 ,
+        humidity = consolidatedWeather['humidity'] as int ?? 0,
+        lastUpdated = DateTime.now(),
+        location = city ;
 
-    return Weather(
-      weatherCondition: _mapStringToWeatherCondition(consolidatedWeather['weather_state_abbr'])  ?? '',
-      formattedCondition: consolidatedWeather['weather_state_abbr'] ?? '' ,
-      created: consolidatedWeather['applicable_date'] ?? '',
-      minTemp: consolidatedWeather['min_temp']  as double ?? 0.0,
-      maxTemp: consolidatedWeather['max_temp'] as double ?? 0.0 ,
-      temp: consolidatedWeather['the_temp'] as double ?? 0.0,
-      windSpeed: consolidatedWeather['wind_speed'] as double ?? 0.0,
-      airPressure: consolidatedWeather['air_pressure'] as double ?? 1000 ,
-      humidity: consolidatedWeather['humidity'] as int ?? 0,
-      lastUpdated: DateTime.now(),
-      location: city
-
-    );
-  }
   static WeatherCondition _mapStringToWeatherCondition(String formattedCondition){
     Map<String , WeatherCondition> map = {
       'sn': WeatherCondition.snow,
@@ -105,5 +75,3 @@ enum WeatherCondition{
   hail,
   unknown
 }
-
-

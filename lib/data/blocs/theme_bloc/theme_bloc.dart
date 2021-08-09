@@ -6,8 +6,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:meta/meta.dart';
-import 'package:weather/models/weather.dart';
-import 'package:weather/resources/icons.dart';
+import 'package:weather/data/api/model/api_weather.dart';
+import 'package:weather/domain/models/weather.dart';
+
+import 'package:weather/presentation/utils/icons.dart';
 
 part 'theme_event.dart';
 part 'theme_state.dart';

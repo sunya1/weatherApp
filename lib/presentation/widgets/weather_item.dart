@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:weather/blocs/theme_bloc/theme_bloc.dart';
-import 'package:weather/models/weather.dart';
-import 'package:weather/resources/icons.dart';
+import 'package:weather/data/blocs/theme_bloc/theme_bloc.dart';
+import 'package:weather/domain/models/weather.dart';
+
+import 'package:weather/presentation/utils/icons.dart';
 
 class WeatherItem extends StatelessWidget {
   final Weather weather;
