@@ -9,7 +9,7 @@ class ApiUtil{
 
   ApiUtil(this._weatherService);
 
-  Future<List<Weather>> getWeather({@required String city}) async{
+  Future<List<Weather>> getWeather({@required String city}) async {
     final result = await _weatherService.getWeatherFromCity(city);
 
     List<Weather> weathers =  result.map<Weather>((apiWeather) => WeatherMapper.fromApi(apiWeather)).toList();

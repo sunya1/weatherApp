@@ -27,10 +27,10 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
         final List<Weather> weathers = await weatherRepository.getWeather(city: event.city);
 
-
         yield WeatherStateSuccess(weathers: weathers);
       }
       catch(exception){
+        final List<Weather> weathers = await weatherRepository.getWeather(city: event.city);
         print(exception.toString());
         yield WeatherStateFailure();
       }

@@ -8,6 +8,7 @@ class RepositoryModule {
   static WeatherRepository weatherRepository() {
     if(_weatherRepository == null){
       _weatherRepository = WeatherDataRepository(ApiModule.apiUtil());
+
     }
     return _weatherRepository ;
   }

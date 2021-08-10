@@ -15,15 +15,15 @@ class WeatherService{
   );
 
   Future<List<ApiWeather>> fetchWeather({@required locationId}) async {
-    final response = await _dio.get('/api/location/{$locationId}');
-
+    final response = await _dio.get('/api/location/$locationId');
+    print("here fetch2");
     final weatherJson = response.data ;
 
     final city = weatherJson['title'] as String ;
     final parsed = weatherJson['consolidated_weather'].cast<Map<String , dynamic>>() ;
 
     List<ApiWeather> weathers =  parsed.map<ApiWeather>((json) => ApiWeather.fromJson(json , city)).toList();
-
+    print(weathers.toString() + "lol");
     return weathers ;
 
   }
@@ -33,7 +33,9 @@ class WeatherService{
     final response = await _dio.get('/api/location/search' , queryParameters: query);
 
     if(response.statusCode == 200){
-      final cities = jsonDecode(response.data) as List ;
+
+      final cities = response.data as List ;
+
       return (cities.first)['woeid'] ?? 0 ;
     }
     else{
